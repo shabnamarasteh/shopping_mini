@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fa" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/header::head">
+    <meta charset="UTF-8">
+    <title th:text="product List"></title>
+</head>
+<body>
+<div class="col-lg-12">
+    <table class="table table-hover" style="direction: rtl">
+        <thead>
+        <td>#</td>
+        <td></td>
+        <td>title</td>
+        <td>price</td>
+        <td>price_Promotion</td>
+        <td>count</td>
+        <td>saleCount</td>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${productList} ">
+            <td ></td>
+            <td ><img  class="img-responsive" width="100px" th:src="'/img/products/'+${product.getImgSrc()}" th:alt="${product.getTitle()}"></td>
+            <td><p th:text="${product.getTitle()}"></p></td>
+            <td><p th:text="${product.getPrice()}"></p></td>
+            <td><p th:text="${product.getPricePromotion()}"></p></td>
+            <td><p th:text="${product.getCount()}"></p></td>
+            <td><p th:text="${product.getSaleCount()}"></p></td>
+            <!--            <td><a th:href="'/product/'+${product.getId()}"><p th:text="'update'"></p></a></td>-->
+            <td><a th:href="'/product/delete/'+${product.getId()}"><p th:text="'delete'"></p></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
